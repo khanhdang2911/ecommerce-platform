@@ -15,6 +15,14 @@ namespace Ecommerce_website.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<UserRole>(entity=>{
+                entity.HasKey(u=>new{u.RoleId, u.UserId});
+            });
+
+            modelBuilder.Entity<ProductUser>(entity=>{
+                entity.HasKey(u=>new{u.UserId, u.ProductId});
+            });
+            
             
            
         }
@@ -23,6 +31,7 @@ namespace Ecommerce_website.Models
         public DbSet<User> users{set;get;}
         public DbSet<UserRole> userRoles{set;get;}
         public DbSet<Role> roles {set;get;}
+        public DbSet<ProductUser> productUsers{set;get;}
 
     }
 }

@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Ecommerce_website.Models
 {
-    [Table("User")]
+    [Table("Users")]
   public class User
   {
     [Key]
@@ -15,6 +16,7 @@ namespace Ecommerce_website.Models
     public string UserAddress{set;get;}
     [Phone]
     public string PhoneNumber{set;get;}
+    public string PassWord{set;get;}
     
 
   }
