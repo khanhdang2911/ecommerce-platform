@@ -1,0 +1,247 @@
+@{
+	Layout="_LayoutCustomer";
+}
+@using Ecommerce_website.Models
+@model List<Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Colo Shop Categories</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/styles/categories_responsive.css">
+
+</head>
+
+<body>
+
+<div class="super_container">
+
+
+
+
+	<!-- Hamburger Menu -->
+
+
+
+	<div class="container product_section_container">
+		<div class="row">
+			<div class="col product_section clearfix">
+
+				<!-- Breadcrumbs -->
+
+				<div class="breadcrumbs d-flex flex-row align-items-center">
+					<ul>
+					</ul>
+				</div>
+				<!-- Sidebar -->
+				@* <div class="sidebar">
+					<div class="sidebar_section">
+						<div class="sidebar_title">
+							<h5>Product Category</h5>
+						</div>
+						<ul class="sidebar_categories">
+							@foreach(var item in Model)
+                            {
+                                <li><a href="#">@item.Title</a></li>
+                            }
+						</ul>
+					</div>
+
+					<!-- Price Range Filtering -->
+					<div class="sidebar_section">
+						<div class="sidebar_title">
+							<h5>Filter by Price</h5>
+						</div>
+						<p>
+							<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						</p>
+						<div id="slider-range"></div>
+						<div class="filter_button"><span>filter</span></div>
+					</div>
+					
+
+				</div> *@
+				
+                @await Component.InvokeAsync("ViewCategory")
+				<!-- Main Content -->
+
+				<div class="main_content">
+
+					<!-- Products -->
+
+					<div class="products_iso">
+						<div class="row">
+							<div class="col">
+
+								<!-- Product Sorting -->
+
+								<div class="product_sorting_container product_sorting_container_top">
+									<ul class="product_sorting">
+										<li>
+											<span class="type_sorting_text">Sắp xếp sản phẩm</span>
+											<i class="fa fa-angle-down"></i>
+											<ul class="sorting_type">
+												<li>
+													<span>
+														<form method="post" asp-action="SortByPrice">
+															@for (int i = 0; i < Model.Count; i++)
+															{
+																	<input type="hidden" name="products[@i].Id" value="@Model[i].Id" />
+																	<input type="hidden" name="products[@i].Name" value="@Model[i].Name" />
+																	<input type="hidden" name="products[@i].Price" value="@Model[i].Price" />
+																	<input type="hidden" name="products[@i].CategoryId" value="@Model[i].CategoryId" />
+																	<input type="hidden" name="products[@i].Status" value="@Model[i].Status" />
+																	<input type="hidden" name="products[@i].Introduce" value="@Model[i].Introduce" />
+																	<input type="hidden" name="products[@i].linkImage" value="@Model[i].linkImage" />
+															}
+															<button type="submit" style="background-color: transparent;border: none;cursor: pointer;">Theo giá</button>
+														</form>
+													</span>
+												</li>
+												<li>
+													<span>
+														<form method="post" asp-action="SortByName">
+															@for (int i = 0; i < Model.Count; i++)
+															{
+																	<input type="hidden" name="products[@i].Id" value="@Model[i].Id" />
+																	<input type="hidden" name="products[@i].Name" value="@Model[i].Name" />
+																	<input type="hidden" name="products[@i].Price" value="@Model[i].Price" />
+																	<input type="hidden" name="products[@i].CategoryId" value="@Model[i].CategoryId" />
+																	<input type="hidden" name="products[@i].Status" value="@Model[i].Status" />
+																	<input type="hidden" name="products[@i].Introduce" value="@Model[i].Introduce" />
+																	<input type="hidden" name="products[@i].linkImage" value="@Model[i].linkImage" />
+															}
+															<button type="submit" style="background-color: transparent;border: none;cursor: pointer;">Theo tên</button>
+														</form>
+													</span>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									
+									
+
+								</div>
+
+								<!-- Product Grid -->
+
+								<div class="product-grid">
+
+									<!-- Product 1 -->
+
+									
+                                    @foreach(var item in Model)
+									{
+									<div class="product-item men">
+										<div class="product discount product_filter">
+											<div class="product_image">
+												<img src="~/images/product_1.png" alt="">
+												<a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id" class="" style="text-align: center;display: block;font-weight: 500;color:rgb(223, 49, 49)">Chi tiết</a>
+
+											</div>
+											<div class="favorite favorite_left"></div>
+											<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-30%</span></div>
+											<div class="product_info">
+												<h6 class="product_name"><a href="single.html">@item.Name</a></h6>
+												<div class="product_price">$@((Int32)item.Price).00<span>$@((Int32)item.Price+0.4*(Int32)item.Price).00</span></div>
+											</div>
+											
+										</div>
+										<div class="red_button add_to_cart_button"><a href="#">Thêm vào giỏ</a></div>
+									</div>
+									}
+                                    
+
+
+
+								</div>
+
+								<!-- Product Sorting -->
+
+								
+							
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<!-- Benefit -->
+
+	<div class="benefit">
+		<div class="container">
+			<div class="row benefit_row">
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>free shipping</h6>
+							<p>Suffered Alteration in Some Form</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>cach on delivery</h6>
+							<p>The Internet Tend To Repeat</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>45 days return</h6>
+							<p>Making it Look Like Readable</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>opening all week</h6>
+							<p>8AM - 09PM</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+</div>
+
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script src="~/styles/bootstrap4/popper.js"></script>
+<script src="~/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/plugins/easing/easing.js"></script>
+<script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="~/js/categories_custom.js"></script>
+
+</body>
+
+</html>

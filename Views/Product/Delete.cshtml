@@ -1,0 +1,8 @@
+@model Product
+<h1 class="alert alert-danger">Bạn có chắc muốn xóa sản phẩm này không?</h1>
+<form method="post" asp-action="DeleteConfirm" asp-route-id="@Model.Id">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    
+</form>
+<br>
+<a type="submit" asp-action="Index" class="btn btn-primary">Không</a>

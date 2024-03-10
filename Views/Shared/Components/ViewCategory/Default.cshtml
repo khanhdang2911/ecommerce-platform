@@ -1,0 +1,18 @@
+@model List<Category>
+<div class="sidebar">
+					<div class="sidebar_section">
+						<div class="sidebar_title">
+							<h5>Product Category</h5>
+						</div>
+						<ul class="sidebar_categories">
+							@foreach(var item in Model)
+                            {
+                                <li><a asp-action="Home" asp-controller="Category" asp-route-id="@item.Id">@item.Title</a></li>
+                            }
+						</ul>
+					</div>
+
+					<!-- Price Range Filtering -->
+					
+					
+</div>

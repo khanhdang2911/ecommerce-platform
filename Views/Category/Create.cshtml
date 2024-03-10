@@ -1,0 +1,32 @@
+@model Ecommerce_website.Models.Category
+
+
+<form method="post" asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Content" class="control-label"></label>
+            <input type="text" asp-for="Content" class="form-control">
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <input type="submit" value="Create" class="btn btn-info">
+        </div>
+    </div>
+</form>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
