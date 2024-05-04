@@ -272,3 +272,4 @@ D:\Ecommerce_website\obj\Debug\net8.0\Ecommerce_website.pdb
 D:\Ecommerce_website\obj\Debug\net8.0\Ecommerce_website.genruntimeconfig.cache
 D:\Ecommerce_website\obj\Debug\net8.0\ref\Ecommerce_website.dll
 D:\Ecommerce_website\obj\Debug\net8.0\Ecommerce_website.sourcelink.json
+D:\Ecommerce_website\bin\Debug\net8.0\BCrypt.Net-Next.dll

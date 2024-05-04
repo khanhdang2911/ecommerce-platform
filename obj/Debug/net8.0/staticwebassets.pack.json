@@ -649,6 +649,106 @@
       "PackagePath": "staticwebassets\\styles\\single_styles.css"
     },
     {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\AirPods Pro.jpg",
+      "PackagePath": "staticwebassets\\uploads\\AirPods Pro.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Apple Watch Series 8.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Apple Watch Series 8.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Asus ROG Zephyrus G15.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Asus ROG Zephyrus G15.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Dell XPS 17.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Dell XPS 17.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Gaming PC - RTX 4090.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Gaming PC - RTX 4090.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Garmin Fenix 7.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Garmin Fenix 7.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Google Pixel 7 Pro.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Google Pixel 7 Pro.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Iphone 15 Promax.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Iphone 15 Promax.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\LG C1 OLED.jpg",
+      "PackagePath": "staticwebassets\\uploads\\LG C1 OLED.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Lenovo Yoga Tab 13.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Lenovo Yoga Tab 13.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Logitech G Pro X Superlight.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Logitech G Pro X Superlight.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\MacBook Pro 2023.jpg",
+      "PackagePath": "staticwebassets\\uploads\\MacBook Pro 2023.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\PlayStation 6.jpg",
+      "PackagePath": "staticwebassets\\uploads\\PlayStation 6.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Samsung Galaxy S22 Ultra.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Samsung Galaxy S22 Ultra.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Samsung Galaxy Tab S8.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Samsung Galaxy Tab S8.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Samsung Galaxy Watch 5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Samsung Galaxy Watch 5.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Samsung QN90A Neo QLED.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Samsung QN90A Neo QLED.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Sony Bravia XR A90J.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Sony Bravia XR A90J.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\Xbox Series X.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Xbox Series X.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\apple-watch-series-2-38mm-4 (1).png",
+      "PackagePath": "staticwebassets\\uploads\\apple-watch-series-2-38mm-4 (1).png"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\download.jpg",
+      "PackagePath": "staticwebassets\\uploads\\download.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\iPad Pro 2023.jpg",
+      "PackagePath": "staticwebassets\\uploads\\iPad Pro 2023.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\iphone14.2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\iphone14.2.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\iphone14.jpg",
+      "PackagePath": "staticwebassets\\uploads\\iphone14.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\iphone14promax.jpg",
+      "PackagePath": "staticwebassets\\uploads\\iphone14promax.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Ecommerce_website.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

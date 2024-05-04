@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kXknuV5VfHiSvuVjU0QqN1fjI8d0nMbfIxZChb76XjvZKd3wMJF76VCKmHVdLrncY/gRHFZSOJr6xtjeP6JlFw==",
+  "dgSpecHash": "sQj5ImT95dmi943EjFbUwgljRcsyStqrXN3tlq8uvwOXHXJhNXAqNieVgmdKKnrSVcu9qMsbGLh7/o8U/pYung==",
   "success": true,
   "projectFilePath": "D:\\Ecommerce_website\\Ecommerce_website.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DXT\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\DXT\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\DXT\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\DXT\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\DXT\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\DXT\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",

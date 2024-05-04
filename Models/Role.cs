@@ -10,7 +10,7 @@ namespace Ecommerce_website.Models
     [Key]
     public int Id{set;get;}
     [Display(Name ="Tên role")]
-    public string RoleName{set;get;}
+    public string RoleName{set;get;}=string.Empty;
     
     
 

@@ -1,0 +1,65 @@
+@model Ecommerce_website.Models.Product
+@{
+    SelectList listCategory = ViewData["listCategory"] as SelectList;
+}
+<div class="container" style="width: 80%; margin-top: 200px;">
+    <form method="post" asp-action="Edit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly"></div>
+        @* @Html.ValidationSummary(false, "", new { @class = "text-danger" }) *@
+    
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Price" class="control-label"></label>
+                <input type="text" asp-for="Price" class="form-control">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label asp-for="Status" class="control-label">Trình trạng sản phẩm</label>
+                <input type="text" asp-for="Status" class="form-control">
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+    
+            <div class="col-md-6">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="@listCategory">Danh mục</select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input type="file" asp-for="ImageFile" class="form-control">
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+        </div>
+    
+        @* <div class="form-group row"> *@
+            <div class="col-md-12">
+                <label asp-for="Introduce" class="control-label"></label>
+                <textarea asp-for="Introduce" id="Introduce"></textarea>
+                <span asp-validation-for="Introduce" class="text-danger"></span>
+            </div>
+        @* </div> *@
+    
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <input type="submit" value="Edit" class="btn btn-warning">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

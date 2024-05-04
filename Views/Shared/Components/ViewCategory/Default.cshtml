@@ -5,6 +5,8 @@
 							<h5>Product Category</h5>
 						</div>
 						<ul class="sidebar_categories">
+
+							<li><a asp-action="Home" asp-controller="Category" asp-route-id="">Tất cả</a></li>
 							@foreach(var item in Model)
                             {
                                 <li><a asp-action="Home" asp-controller="Category" asp-route-id="@item.Id">@item.Title</a></li>

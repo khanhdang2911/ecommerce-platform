@@ -1,7 +1,6 @@
 using Ecommerce_website.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 namespace Ecommerce_website.Controllers
 {
     public class CategoryController:Controller
@@ -28,18 +27,17 @@ namespace Ecommerce_website.Controllers
         }
         public IActionResult Home(int?id)
         {
-            List<Product> productList=new List<Product>();
+            var productList=from p in _Context.products select p;
             if(id==null)
             {
-                productList=(from p in _Context.products select p).ToList();
-                return View(productList);
+                return View(productList.ToList());
             }
-            productList=_Context.products.Where(p=>p.CategoryId==id).ToList();
-            if(productList.Count==0)
+            productList=productList.Where(p=>p.CategoryId==id);
+            if(productList.ToList().Count==0)
             {
                 return Content("Không có sản phẩm bạn tìm");
             }
-            return View(productList);
+            return View(productList.ToList());
             
         }
         [HttpPost]
@@ -55,31 +53,18 @@ namespace Ecommerce_website.Controllers
             return View("Home",products);
         }
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Title,Content")] Category category)
+        public async Task<IActionResult> Create(string Title)
         {
-            if(!ModelState.IsValid)
-            {
-                ModelState.AddModelError("","Các nội dung bạn nhập chưa đúng quy định");
-            }
+            Category category=new Category();
+            category.Title=Title;
             await _Context.categories.AddAsync(category);
             await _Context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
-        {
-            var kq=(from p in _Context.categories where p.Id==id select p).FirstOrDefault();
-            
-            return View(kq);
-        }
-        [HttpPost]
-        public async Task<IActionResult> DeleteConfirm(int? id)
         {
             if(id==null)
             {   
@@ -91,6 +76,31 @@ namespace Ecommerce_website.Controllers
                 return Content("Khong tim thay category co id ="+id);
             }
             _Context.categories.Remove(kq);
+            await _Context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Search(string productName)
+        {
+            var listProduct=_Context.products.AsQueryable();
+            if(string.IsNullOrWhiteSpace(productName)==false)
+            {
+                listProduct=listProduct.Where(p=>p.Name.Contains(productName));
+            }
+            return View("Home",listProduct.ToList());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id,string categoryNameEdit)
+        {
+            var kq=_Context.categories.Find(id);
+            if(kq==null)
+            {
+                return NotFound();
+            }
+            _Context.Entry(kq).State=EntityState.Modified;
+            kq.Title=categoryNameEdit;
+            Console.WriteLine("dsad"+categoryNameEdit);
+            Console.WriteLine("dasd"+kq.Title);
             await _Context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
