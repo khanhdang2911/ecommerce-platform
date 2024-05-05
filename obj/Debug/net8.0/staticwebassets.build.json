@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mr7R2FS/v2RT9bvU38K6ziBH3RJiu43oObZiyY+nwEU=",
+  "Hash": "Zz9MeR4O5WptUvCo20aNyWGYVuXaUTgpHCiZmLglmVA=",
   "Source": "Ecommerce_website",
   "BasePath": "_content/Ecommerce_website",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\contact.html"
+    },
+    {
+      "Identity": "D:\\Ecommerce_website\\wwwroot\\css\\layout_admin.css",
+      "SourceId": "Ecommerce_website",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Ecommerce_website\\wwwroot\\",
+      "BasePath": "_content/Ecommerce_website",
+      "RelativePath": "css/layout_admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\layout_admin.css"
     },
     {
       "Identity": "D:\\Ecommerce_website\\wwwroot\\css\\site.css",
@@ -338,6 +357,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\desc_3.jpg"
+    },
+    {
+      "Identity": "D:\\Ecommerce_website\\wwwroot\\images\\logoKhanhShop.png",
+      "SourceId": "Ecommerce_website",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Ecommerce_website\\wwwroot\\",
+      "BasePath": "_content/Ecommerce_website",
+      "RelativePath": "images/logoKhanhShop.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logoKhanhShop.png"
     },
     {
       "Identity": "D:\\Ecommerce_website\\wwwroot\\images\\map_marker.png",

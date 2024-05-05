@@ -1,11 +1,14 @@
 @inject AppDbContext context
+@{
+	var userId=User.Claims.FirstOrDefault(c=>c.Type=="Id")?.Value;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Khanh Shop</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
+<meta name="description" content="Khanh Shop">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -15,6 +18,11 @@
 <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+	.btn{
+		cursor: pointer;
+	}
+</style>
 
 </head>
 
@@ -47,8 +55,15 @@
 										<i class="fa fa-angle-down"></i>
 									</a>
 									<ul class="account_selection">
-										<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-										<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+										@if(User.Identity.IsAuthenticated)
+										{
+											<li><a asp-action="Logout" asp-controller="User"><i class="fa fa-sign-in" aria-hidden="true"></i>Log Out</a></li>
+											<li><a asp-action="EditUser" asp-controller="User" asp-route-usersId="@userId"><i class="fa-regular fa-user"></i>Profile</a></li>
+										}
+										else{
+											<li><a asp-action="Login" asp-controller="User"><i class="fa fa-sign-in" aria-hidden="true"></i>Log In</a></li>
+											<li><a asp-action="Register" asp-controller="User"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+										}
 									</ul>
 								</li>
 							</ul>
@@ -65,7 +80,7 @@
 				<div class="row">
 					<div class="col-lg-12 text-right">
 						<div class="logo_container">
-							<a asp-controller="Category" asp-action="Home">colo<span>shop</span></a>
+							<a asp-controller="Category" asp-action="Home">khanh<span>shop</span></a>
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_menu">
@@ -80,9 +95,13 @@
 
 									</form>
 								</li>
-								<li><a asp-controller="Product" asp-action="Index" asp-route-id="">Product Manage</a></li>
-								<li><a asp-controller="Category" asp-action="Index" asp-route-id="">Category Manage</a></li>
 
+								@if(User.IsInRole("Admin"))
+								{
+											<li><a asp-controller="Product" asp-action="Index" asp-route-id="">Product</a></li>
+											<li><a asp-controller="Category" asp-action="Index" asp-route-id="">Category</a></li>
+											<li><a asp-controller="Admin" asp-action="Index" asp-route-id="">User</a></li>
+								}
 								
 							</ul>
 							<ul class="navbar_user">
@@ -111,12 +130,23 @@
 				<li class="menu_item">
 					<a asp-controller="Category" asp-action="Index" asp-route-id="">Category Manage</a>
 				</li>
-				<li class="menu_item">
-					<a >Logout</a>
-				</li>
-				<li class="menu_item">
-					<a href=""> Login</a>
-				</li>
+				@if(User.Identity.IsAuthenticated)
+				{
+					<li class="menu_item">
+						<a asp-action="Logout" asp-controller="User">Logout</a>
+					</li>
+					<li class="menu_item">
+						<a asp-action="EditUser" asp-controller="User" asp-route-usersId="@userId">Profile</a>
+					</li>
+				}
+				else{
+					<li class="menu_item">
+						<a asp-action="Login" asp-controller="User" asp-asp-controller="User">Login</a>
+					</li>
+					<li class="menu_item">
+						<a asp-action="Register" asp-controller="User">Register</a>
+					</li>
+				}
 				<li class="menu_item">
 					<form asp-action="Search" asp-controller="Category" style="display: flex;">
 						<div class="form-group">
@@ -137,7 +167,48 @@
     <div class="body" style="min-height: 200px; margin-top: 150px;">
         @RenderBody()
     </div>
-
+	<div class="benefit">
+		<div class="container">
+			<div class="row benefit_row">
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>free shipping</h6>
+							<p>Suffered Alteration in Some Form</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>cach on delivery</h6>
+							<p>The Internet Tend To Repeat</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>45 days return</h6>
+							<p>Making it Look Like Readable</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>opening all week</h6>
+							<p>8AM - 09PM</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Footer -->
 
     <hr>
@@ -175,7 +246,6 @@
 		</div>
 	</footer>
 
-</div>
 
 <script src="~/js/jquery-3.2.1.min.js"></script>
 <script src="~/styles/bootstrap4/popper.js"></script>

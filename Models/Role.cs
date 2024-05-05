@@ -5,14 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Ecommerce_website.Models
 {
     [Table("Role")]
-  public class Role
-  {
-    [Key]
-    public int Id{set;get;}
-    [Display(Name ="Tên role")]
-    public string RoleName{set;get;}=string.Empty;
-    
-    
-
-  }
+    public class Role
+    {
+        [Key]
+        public int Id{set;get;}
+        [Required(ErrorMessage ="Bạn chưa nhập tên role")]
+        public string RoleName{set;get;}=string.Empty;
+        public ICollection<UsersRole>? usersRoles{set;get;}
+    }
 }

@@ -50,6 +50,9 @@ namespace Ecommerce_website.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("DiscountPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Introduce")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -109,7 +112,7 @@ namespace Ecommerce_website.Migrations
                     b.ToTable("Role");
                 });
 
-            modelBuilder.Entity("Ecommerce_website.Models.User", b =>
+            modelBuilder.Entity("Ecommerce_website.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,15 +128,11 @@ namespace Ecommerce_website.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PassWord")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserAddress")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -142,17 +141,19 @@ namespace Ecommerce_website.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Ecommerce_website.Models.UserRole", b =>
+            modelBuilder.Entity("Ecommerce_website.Models.UsersRole", b =>
                 {
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("UsersId")
                         .HasColumnType("int");
 
-                    b.HasKey("RoleId", "UserId");
+                    b.HasKey("RoleId", "UsersId");
 
-                    b.ToTable("UserRole");
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("UsersRole");
                 });
 
             modelBuilder.Entity("Ecommerce_website.Models.Product", b =>
@@ -166,9 +167,34 @@ namespace Ecommerce_website.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Ecommerce_website.Models.UsersRole", b =>
+                {
+                    b.HasOne("Ecommerce_website.Models.Role", null)
+                        .WithMany("usersRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ecommerce_website.Models.Users", null)
+                        .WithMany("usersRoles")
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Ecommerce_website.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Ecommerce_website.Models.Role", b =>
+                {
+                    b.Navigation("usersRoles");
+                });
+
+            modelBuilder.Entity("Ecommerce_website.Models.Users", b =>
+                {
+                    b.Navigation("usersRoles");
                 });
 #pragma warning restore 612, 618
         }

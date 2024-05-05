@@ -31,6 +31,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         // options.SlidingExpiration = true; 
         options.AccessDeniedPath = "/Login/Forbidden/";
     });
+builder.Services.AddSingleton<HashPasswordByBC>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
 

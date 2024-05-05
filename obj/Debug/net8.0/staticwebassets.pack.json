@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\contact.html"
     },
     {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\css\\layout_admin.css",
+      "PackagePath": "staticwebassets\\css\\layout_admin.css"
+    },
+    {
       "Id": "D:\\Ecommerce_website\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -63,6 +67,10 @@
     {
       "Id": "D:\\Ecommerce_website\\wwwroot\\images\\desc_3.jpg",
       "PackagePath": "staticwebassets\\images\\desc_3.jpg"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\images\\logoKhanhShop.png",
+      "PackagePath": "staticwebassets\\images\\logoKhanhShop.png"
     },
     {
       "Id": "D:\\Ecommerce_website\\wwwroot\\images\\map_marker.png",

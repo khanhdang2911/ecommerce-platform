@@ -1,8 +1,10 @@
 using Ecommerce_website.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace Ecommerce_website.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController:Controller
     {
         private readonly AppDbContext _Context;
@@ -25,6 +27,7 @@ namespace Ecommerce_website.Controllers
             }
             return View(categorylist);
         }
+        [AllowAnonymous]
         public IActionResult Home(int?id)
         {
             var productList=from p in _Context.products select p;
@@ -80,6 +83,7 @@ namespace Ecommerce_website.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Search(string productName)
         {
             var listProduct=_Context.products.AsQueryable();

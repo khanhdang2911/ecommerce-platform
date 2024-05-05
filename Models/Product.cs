@@ -19,6 +19,7 @@ namespace Ecommerce_website.Models
 
     [Display(Name = "Giá")]
     [Required(ErrorMessage ="Hãy nhập giá cho sản phẩm")]
+    [DataType(DataType.Currency,ErrorMessage ="Nhập sai định dạng cho giá sản phẩm")]
     public decimal Price{set;get;}
     [DataType(DataType.Text)]
     [Required(ErrorMessage ="Hãy nhập giới thiệu cho sản phẩm")]
@@ -35,6 +36,10 @@ namespace Ecommerce_website.Models
     public int CategoryId{set;get;}
     [Required(ErrorMessage ="Chưa chọn tình trạng cho sản phẩm")]
     public string Status{set;get;}=string.Empty;
+    [Required(ErrorMessage ="Chưa nhập giá khuyến mãi cho sản phẩm")]
+    [DataType(DataType.Currency,ErrorMessage ="Nhập sai định dạng cho giá khuyến mãi sản phẩm")]
+
+    public decimal DiscountPrice{set;get;}
     public Category? Category{set;get;}
   }
 }

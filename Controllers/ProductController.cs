@@ -1,9 +1,11 @@
 using Ecommerce_website.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 namespace Ecommerce_website.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class ProductController:Controller
     {
         private readonly IWebHostEnvironment _environment;
@@ -19,6 +21,7 @@ namespace Ecommerce_website.Controllers
             var kq=(from p in _Context.products select p).ToList();
             return View(kq);
         }
+        [AllowAnonymous]
         public IActionResult Detail(int? id)
         {
             if(id==null)
