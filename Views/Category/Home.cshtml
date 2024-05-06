@@ -157,12 +157,11 @@
 											<div class="favorite favorite_left"></div>
 											<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>Sale</span></div>
 											<div class="product_info">
-												<h6 class="product_name"><a href="single.html">@item.Name</a></h6>
+												<h6 class="product_name"><a href="">@item.Name</a></h6>
 												<div class="product_price">$@item.DiscountPrice<span>$@item.Price</span></div>
 											</div>
-											
 										</div>
-										<div class="red_button add_to_cart_button"><a href="#">Add to cart</a></div>
+										<div class="red_button add_to_cart_button"><a asp-action="AddProduct" asp-controller="Cart" asp-route-productId="@item.Id">Add to cart</a></div>
 									</div>
 									}
                                     
@@ -185,8 +184,6 @@
 		</div>
 	</div>
 </div>
-	
-
 
 
 

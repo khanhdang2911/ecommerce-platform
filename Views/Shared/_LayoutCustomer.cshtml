@@ -1,6 +1,11 @@
-@inject AppDbContext context
+@inject AppDbContext _context
 @{
-	var userId=User.Claims.FirstOrDefault(c=>c.Type=="Id")?.Value;
+	var userId=(User.Claims.FirstOrDefault(c=>c.Type=="Id")?.Value);
+	int totalProductInCart=0;
+	if(User.Identity.IsAuthenticated)
+	{
+		totalProductInCart=_context.productUsers.Where(c=>c.UsersId==int.Parse(userId)).ToList().Count;
+	}
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -106,9 +111,16 @@
 							</ul>
 							<ul class="navbar_user">
 								<li class="checkout">
-									<a href="#">
+									<a asp-action="Detail" asp-controller="Cart">
 										<i class="fa-solid fa-cart-shopping"></i>
-										<span id="checkout_items" class="checkout_items">2</span>
+										
+											@if(User.Identity.IsAuthenticated)
+											{
+												<span id="checkout_items" class="checkout_items">
+													@totalProductInCart
+												</span>
+											}
+										
 									</a>
 								</li>
 							</ul>
@@ -167,7 +179,7 @@
     <div class="body" style="min-height: 200px; margin-top: 150px;">
         @RenderBody()
     </div>
-	<div class="benefit">
+	<div class="benefit" style="margin-top: 150px;">
 		<div class="container">
 			<div class="row benefit_row">
 				<div class="col-lg-3 benefit_col">

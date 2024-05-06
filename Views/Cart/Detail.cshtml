@@ -1,0 +1,158 @@
+@using Ecommerce_website.Dtos
+@inject AppDbContext _context
+@{
+	var userId=(User.Claims.FirstOrDefault(c=>c.Type=="Id")?.Value);
+	int totalProductInCart=0;
+  List<ProductInCartDto> ProductsInCart=new List<ProductInCartDto>();
+  Users users=new Users();
+	if(User.Identity.IsAuthenticated&&userId!=null)
+	{
+      totalProductInCart=_context.productUsers.Where(c=>c.UsersId==int.Parse(userId)).ToList().Count;
+      ProductsInCart=(from pu in _context.productUsers join p in _context.products
+                        on pu.ProductId equals p.Id where pu.UsersId==int.Parse(userId) select new ProductInCartDto{
+                            Id=p.Id,
+                            Name=p.Name,
+                            Price=p.Price,
+                            Quantity=pu.ProductQuantity,
+                            linkImage=p.linkImage
+                        }).ToList();
+
+      @* =============Users ==============*@
+      users=_context.users.Find(int.Parse(userId));
+	}
+ 
+  @* ============tong tien =============*@
+  decimal TotalMoney=0;
+  foreach(var item in ProductsInCart)
+  {
+    TotalMoney+=item.Price*item.Quantity;
+  }
+  decimal shipping=10;
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/cart-detail.css">
+</head>
+
+<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Cart</h1>
+                    <h6 class="mb-0 text-muted" id="total-item" value="@totalProductInCart">@totalProductInCart items</h6>
+                  </div>
+                  <hr class="my-4">
+                  @foreach(var item in ProductsInCart){
+                      <div class="row mb-4 d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <img
+                            src="~/@item.linkImage"
+                            class="img-fluid rounded-3" alt="" style="max-width: 100px;max-height: 95px;">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          @* <h6 class="text-muted">Shirt</h6> *@
+                          <h6 class="text-black mb-0">@item.Name</h6>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                          
+
+                          <input id="form1" min="0" name="quantity" value="@item.Quantity" type="number"
+                            class="form-control form-control-sm" style="text-align: center;" disabled />
+
+                          
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h6 class="mb-0">€ @(item.Price*item.Quantity)</h6>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                          <a asp-action="RemoveItem" asp-route-productId="@item.Id" class="text-muted"><i class="fas fa-times"></i></a>
+                        </div>
+                      </div>
+
+                      <hr class="my-4">
+                  }
+
+
+                  <div class="pt-5">
+                    <h6 class="mb-0"><a asp-action="Home" asp-controller="Category" class="text-body"><i
+                          class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase">Product:</h5>
+                    <h5>€ @TotalMoney</h5>
+                  </div>
+
+                  <h5 class="text-uppercase mb-3">Shipping</h5>
+
+                  <div class="mb-4 pb-2">
+                    <select data-mdb-select-init>
+                      <option value="1">Standard-Delivery- €10.00</option>
+                    </select>
+                  </div>
+
+                  <h5 class="text-uppercase mb-3">Give code</h5>
+
+                  <div class="mb-5">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                    </div>
+                    <form asp-action="Checkout" id="form-checkout" name="form-checkout">
+                      <label for="address">Address</label>
+                      <input type="text" required id="address" name="address" value="@users.Address" class="form-control" />
+                      <input type="hidden" name="UsersId" value="@userId">
+                      <input type="hidden" name="Address" id="address-input">
+                      <input type="hidden" name="TotalMoney" value="@(TotalMoney+shipping)">
+                      <input type="hidden" name="DeliveryMethod" value="shipping">
+                    </form>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-5">
+                    <h5 class="text-uppercase">Total price:</h5>
+                    <h5>€ @(TotalMoney+shipping)</h5>
+                  </div>
+
+                  <button type="submit" id="btn-submit-checkout" form="form-checkout" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark">Check out</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+    let formCheckout=document.querySelector("#form-checkout");//form
+    let btnSubmit=document.querySelector("#btn-submit-checkout");//btn submit
+    let inputAddressHidden=document.querySelector("#address-input");
+    inputAddressHidden.value=document.querySelector("#address").getAttribute("value");//gan gia tri cho address
+    console.log(inputAddressHidden);
+
+    formCheckout.onsubmit=function(e)
+    {
+      let totalItem=document.querySelector("#total-item").getAttribute("value");  
+      if(totalItem==0)
+      {
+        e.preventDefault();
+      }
+    }
+</script>

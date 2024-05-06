@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -21,7 +22,8 @@ namespace Ecommerce_website.Models
         public string Password{set;get;}=string.Empty;
 
         public ICollection<UsersRole>? usersRoles{set;get;}
-    
+        public ICollection<ProductUsers>? ProductUsers{set;get;}
+        public string? Address{set;get;}
 
   }
 }

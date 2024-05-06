@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Ecommerce_website.Models
 {
-    [Table("ProductUser")]
-  public class ProductUser
+  [Table("ProductUsers")]
+  public class ProductUsers
   {
-    public int UserId{set;get;}
+    public int UsersId{set;get;}
     public int ProductId{set;get;}
     public int ProductQuantity{set;get;}
-    
+
 
   }
 }

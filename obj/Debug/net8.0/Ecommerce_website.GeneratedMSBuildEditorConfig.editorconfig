@@ -50,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUm9sZU1hbmFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Ecommerce_website/Views/Cart/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Ecommerce_website/Views/Category/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\contact.html"
     },
     {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\css\\cart-detail.css",
+      "PackagePath": "staticwebassets\\css\\cart-detail.css"
+    },
+    {
       "Id": "D:\\Ecommerce_website\\wwwroot\\css\\layout_admin.css",
       "PackagePath": "staticwebassets\\css\\layout_admin.css"
     },
@@ -147,6 +151,10 @@
     {
       "Id": "D:\\Ecommerce_website\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\js\\cart-detail.js",
+      "PackagePath": "staticwebassets\\js\\cart-detail.js"
     },
     {
       "Id": "D:\\Ecommerce_website\\wwwroot\\js\\categories_custom.js",

@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Org.BouncyCastle.Bcpg;
 namespace Ecommerce_website.Models
 {
     [Table("Order")]
@@ -10,10 +7,12 @@ namespace Ecommerce_website.Models
   {
     [Key]
     public int Id{set;get;}
-    public int UserId{set;get;}
+    public int UsersId{set;get;}
     public DateTime DateBuy{set;get;}
-    public int IdTrangTrai{set;get;}
-    public string Address{set;get;}
-
+    [Required(ErrorMessage ="Bạn chưa nhập địa chỉ giao hàng")]
+    public string Address{set;get;}=string.Empty;
+    [DataType(DataType.Currency)]
+    public decimal TotalMoney{set;get;}
+    public string DeliveryMethod{set;get;}=string.Empty;
   }
 }
