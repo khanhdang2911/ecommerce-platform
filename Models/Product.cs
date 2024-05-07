@@ -42,5 +42,6 @@ namespace Ecommerce_website.Models
     public decimal DiscountPrice{set;get;}
     public Category? Category{set;get;}
     public ICollection<ProductUsers>? ProductUsers{set;get;}
+    public List<ProductOrder> ProductOrders=new List<ProductOrder>();
   }
 }

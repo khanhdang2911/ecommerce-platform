@@ -4,7 +4,7 @@
 	int totalProductInCart=0;
 	if(User.Identity.IsAuthenticated)
 	{
-		totalProductInCart=_context.productUsers.Where(c=>c.UsersId==int.Parse(userId)).ToList().Count;
+		totalProductInCart=_context.productUsers.Where(c=>c.UsersId==int.Parse(userId)&&c.Status==false).ToList().Count;
 	}
 }
 <!DOCTYPE html>

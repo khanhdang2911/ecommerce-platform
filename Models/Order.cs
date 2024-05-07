@@ -14,5 +14,6 @@ namespace Ecommerce_website.Models
     [DataType(DataType.Currency)]
     public decimal TotalMoney{set;get;}
     public string DeliveryMethod{set;get;}=string.Empty;
+    public List<ProductOrder> ProductOrders=new List<ProductOrder>();
   }
 }

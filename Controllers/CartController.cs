@@ -59,7 +59,7 @@ namespace Ecommerce_website.Controllers
             return View();
         }
         [HttpPost]
-        public async  Task<IActionResult> Checkout(int UsersId, string Address,decimal TotalMoney, string DeliveryMethod)
+        public async  Task<IActionResult> Checkout(int UsersId, string Address,decimal TotalMoney, string DeliveryMethod,List<int> productListId)
         {
             Order order=new Order();
             order.UsersId=UsersId;
@@ -67,14 +67,24 @@ namespace Ecommerce_website.Controllers
             order.TotalMoney=TotalMoney;
             order.DeliveryMethod=DeliveryMethod;
             order.DateBuy=DateTime.Now;
-            await _context.orders.AddAsync(order);
+            var newOrder=await _context.orders.AddAsync(order);
             var removeItems=_context.productUsers.Where(p=>p.UsersId==UsersId).ToList();
-            _context.productUsers.RemoveRange(removeItems);
+            Console.WriteLine("Co chay vao day khong 222 "+productListId.Count);
+            foreach(var item in productListId)
+            {
+                Console.WriteLine("Co chay vao day khong");
+                var productUser=_context.productUsers.First(p=>p.UsersId==UsersId&&p.ProductId==item);
+                _context.Entry(productUser).State=EntityState.Modified;
+                productUser.Status=true;
+            }
             await _context.SaveChangesAsync();
+
+           
+            
             return RedirectToAction("Home","Category");
         }
         [HttpGet]
-        public async Task<IActionResult> RemoveItem(int productId)
+        public async Task<IActionResult> RemoveItem(int productId)//Chuuyen doi trang thai san pham da dat hang
         {
             var UserId=User.Claims.FirstOrDefault(c=>c.Type=="Id").Value;
             if(_context.productUsers.Any(p=>p.UsersId==int.Parse(UserId)&&p.ProductId==productId))
@@ -85,6 +95,5 @@ namespace Ecommerce_website.Controllers
             }
             return RedirectToAction("Detail");
         }
-
     }
 }

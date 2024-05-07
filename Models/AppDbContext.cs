@@ -22,6 +22,10 @@ namespace Ecommerce_website.Models
             modelBuilder.Entity<ProductUsers>(entity=>{
                 entity.HasKey(u=>new{u.UsersId, u.ProductId});
             });
+
+            // modelBuilder.Entity<ProductOrder>(entity=>{
+            //     entity.HasKey(u=>new{u.OrderId, u.ProductId});
+            // });
             
             
            
@@ -33,6 +37,7 @@ namespace Ecommerce_website.Models
         public DbSet<Role> roles {set;get;}
         public DbSet<ProductUsers> productUsers{set;get;}
         public DbSet<Order> orders{set;get;}
+        // public DbSet<ProductOrder> productOrders{set;get;}
 
     }
 }

@@ -1,6 +1,9 @@
 @using Ecommerce_website.Dtos
 @inject AppDbContext _context
 @{
+
+  int index=0;
+
 	var userId=(User.Claims.FirstOrDefault(c=>c.Type=="Id")?.Value);
 	int totalProductInCart=0;
   List<ProductInCartDto> ProductsInCart=new List<ProductInCartDto>();
@@ -9,7 +12,7 @@
 	{
       totalProductInCart=_context.productUsers.Where(c=>c.UsersId==int.Parse(userId)).ToList().Count;
       ProductsInCart=(from pu in _context.productUsers join p in _context.products
-                        on pu.ProductId equals p.Id where pu.UsersId==int.Parse(userId) select new ProductInCartDto{
+                        on pu.ProductId equals p.Id where pu.UsersId==int.Parse(userId)&& pu.Status==false select new ProductInCartDto{
                             Id=p.Id,
                             Name=p.Name,
                             Price=p.Price,
@@ -117,6 +120,11 @@
                       <input type="hidden" name="Address" id="address-input">
                       <input type="hidden" name="TotalMoney" value="@(TotalMoney+shipping)">
                       <input type="hidden" name="DeliveryMethod" value="shipping">
+                      @foreach(var item in ProductsInCart)
+                      {
+                        <input type="hidden" name="productListId[@index]" value="@item.Id">
+                        index++;
+                      }
                     </form>
                   </div>
 
