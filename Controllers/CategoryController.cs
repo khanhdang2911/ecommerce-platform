@@ -55,6 +55,10 @@ namespace Ecommerce_website.Controllers
         public IActionResult SortByName(List<Product> products)
         {
             products=products.OrderBy(p=>p.Name).ToList();
+            foreach(var item in products)
+            {
+                Console.WriteLine(item.Price+"  gia "+item.DiscountPrice);
+            }
             return View("Home",products);
         }
 

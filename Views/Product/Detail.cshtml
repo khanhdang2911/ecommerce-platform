@@ -18,13 +18,37 @@
 <link rel="stylesheet" type="text/css" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="~/styles/single_styles.css">
 <link rel="stylesheet" type="text/css" href="~/styles/single_responsive.css">
+<style>
+	.notify-message{
+		position: fixed;
+		top:110px;
+		right: -300px; /* Bắt đầu ngoài màn hình */
+		width: 200px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 20;
+		background-color: rgb(86, 238, 86);
+		color: white;
+		font-weight: 500;
+		border-radius: 10px;
+		transition: 0.5s ease-in-out;
+	}
+	.notify-message.show {
+        right: 10px; /* Vào trong màn hình */
+    }
+</style>
 </head>
 
 <body>
 
 <div class="super_container">
 
-
+	<div class="notify-message">
+		<i class="fa-solid fa-bell"></i> &nbsp;
+		Add product success
+	</div>
 
 
 	<!-- Hamburger Menu -->
@@ -87,7 +111,7 @@
 							<span id="quantity_value">1</span>
 							<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 						</div>
-						<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+						<div class="red_button" style="margin-left: 20px;padding: 14px;"><a href="#" class="add-to-cart" data-product-id="@Model.Id">Add to cart</a></div>
 						<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
 					</div>
 				</div>
@@ -252,6 +276,43 @@
 <script src="~/plugins/easing/easing.js"></script>
 <script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="~/js/single_custom.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.add-to-cart').click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data('product-id');
+			var quantity=document.querySelector("#quantity_value").innerHTML;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("AddProduct", "Cart")',
+                data: { productId: productId,quantity:quantity },
+                success: function(response) {
+                    if (response.success) {
+						$('#checkout_items').text(response.cartCount);
+						showNotification("Add product success");
+					} else {
+                        alert(response.message); 
+                    }
+                },
+                error: function() {
+                    alert('Failed to add product to cart');
+                }
+            });
+        });
+    });
+
+	function showNotification(message) {
+            var notifyElement = $('.notify-message');
+            @* notifyElement.text(message); *@
+            notifyElement.addClass('show');
+            setTimeout(function() {
+                notifyElement.removeClass('show');
+            }, 1000);
+        }
+
+</script>
+
 </body>
 
 </html>

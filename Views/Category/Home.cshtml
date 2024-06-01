@@ -97,6 +97,7 @@
 																	<input type="hidden" name="products[@i].Id" value="@Model[i].Id" />
 																	<input type="hidden" name="products[@i].Name" value="@Model[i].Name" />
 																	<input type="hidden" name="products[@i].Price" value="@Model[i].Price" />
+																	<input type="hidden" name="products[@i].DiscountPrice" value="@Model[i].DiscountPrice" />
 																	<input type="hidden" name="products[@i].CategoryId" value="@Model[i].CategoryId" />
 																	<input type="hidden" name="products[@i].Status" value="@Model[i].Status" />
 																	<input type="hidden" name="products[@i].Introduce" value="@Model[i].Introduce" />
@@ -114,6 +115,7 @@
 																	<input type="hidden" name="products[@i].Id" value="@Model[i].Id" />
 																	<input type="hidden" name="products[@i].Name" value="@Model[i].Name" />
 																	<input type="hidden" name="products[@i].Price" value="@Model[i].Price" />
+																	<input type="hidden" name="products[@i].DiscountPrice" value="@Model[i].DiscountPrice" />
 																	<input type="hidden" name="products[@i].CategoryId" value="@Model[i].CategoryId" />
 																	<input type="hidden" name="products[@i].Status" value="@Model[i].Status" />
 																	<input type="hidden" name="products[@i].Introduce" value="@Model[i].Introduce" />
@@ -227,7 +229,7 @@
             notifyElement.addClass('show');
             setTimeout(function() {
                 notifyElement.removeClass('show');
-            }, 2000);
+            }, 1000);
         }
 
 </script>

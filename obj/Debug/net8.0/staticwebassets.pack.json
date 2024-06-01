@@ -765,6 +765,10 @@
       "PackagePath": "staticwebassets\\uploads\\iphone14promax.jpg"
     },
     {
+      "Id": "D:\\Ecommerce_website\\wwwroot\\uploads\\samsunggalaxyw4.webp",
+      "PackagePath": "staticwebassets\\uploads\\samsunggalaxyw4.webp"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Ecommerce_website.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

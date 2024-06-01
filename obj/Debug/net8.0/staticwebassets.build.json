@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iEpQn6lKz7DDhcxPzO5PwCktWL3X6hywXs3Hw0lnocY=",
+  "Hash": "hjho95UElM5Os5saQ8xJGgTdDHyzRdg0QWPCHBmjipk=",
   "Source": "Ecommerce_website",
   "BasePath": "_content/Ecommerce_website",
   "Mode": "Default",
@@ -3625,6 +3625,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Samsung QN90A Neo QLED.jpg"
+    },
+    {
+      "Identity": "D:\\Ecommerce_website\\wwwroot\\uploads\\samsunggalaxyw4.webp",
+      "SourceId": "Ecommerce_website",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Ecommerce_website\\wwwroot\\",
+      "BasePath": "_content/Ecommerce_website",
+      "RelativePath": "uploads/samsunggalaxyw4.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\samsunggalaxyw4.webp"
     },
     {
       "Identity": "D:\\Ecommerce_website\\wwwroot\\uploads\\Sony Bravia XR A90J.jpg",

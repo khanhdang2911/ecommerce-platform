@@ -29,7 +29,7 @@ namespace Ecommerce_website.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddProduct(int productId)
+        public async Task<IActionResult> AddProduct(int productId,int quantity=1)
         {
             int UserId=int.Parse(User.Claims.FirstOrDefault(c=>c.Type=="Id").Value);
             ProductUsers productUser=new ProductUsers();
@@ -38,12 +38,12 @@ namespace Ecommerce_website.Controllers
             {
                 productUser.UsersId=UserId;
                 productUser.ProductId=productId;
-                productUser.ProductQuantity=1;
+                productUser.ProductQuantity=quantity;
                 await _context.productUsers.AddAsync(productUser);
             }
             else{
                 _context.Entry(kq).State = EntityState.Modified;
-                kq.ProductQuantity+=1;
+                kq.ProductQuantity+=quantity;
             }
             await _context.SaveChangesAsync();
 
@@ -68,10 +68,8 @@ namespace Ecommerce_website.Controllers
             order.DateBuy=DateTime.Now;
             var newOrder=await _context.orders.AddAsync(order);
             var removeItems=_context.productUsers.Where(p=>p.UsersId==UsersId).ToList();
-            Console.WriteLine("Co chay vao day khong 222 "+productListId.Count);
             foreach(var item in productListId)
             {
-                Console.WriteLine("Co chay vao day khong");
                 var productUser=_context.productUsers.First(p=>p.UsersId==UsersId&&p.ProductId==item);
                 _context.Entry(productUser).State=EntityState.Modified;
                 productUser.Status=true;

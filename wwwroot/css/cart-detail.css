@@ -1,6 +1,6 @@
 @media (min-width: 1025px) {
   .h-custom {
-  height: 100vh !important;
+  height: calc(100vh-300px) !important;
   }
   }
   
@@ -16,7 +16,7 @@
   }
   
   .bg-grey {
-  background-color: #eae8e8;
+  background-color: #f9e7d3;
   }
   
   @media (min-width: 992px) {
