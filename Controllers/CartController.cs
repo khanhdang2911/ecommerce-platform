@@ -28,12 +28,9 @@ namespace Ecommerce_website.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> AddProduct([FromQuery]int productId,int ProductQuantity=1)
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(int productId)
         {
-            if(User.Identity.IsAuthenticated==false)
-            {
-                return RedirectToAction("Login","User");
-            }
             int UserId=int.Parse(User.Claims.FirstOrDefault(c=>c.Type=="Id").Value);
             ProductUsers productUser=new ProductUsers();
             var kq=_context.productUsers.Where(p=>p.UsersId==UserId&&p.ProductId==productId).FirstOrDefault();
@@ -41,18 +38,20 @@ namespace Ecommerce_website.Controllers
             {
                 productUser.UsersId=UserId;
                 productUser.ProductId=productId;
-                productUser.ProductQuantity=ProductQuantity;
+                productUser.ProductQuantity=1;
                 await _context.productUsers.AddAsync(productUser);
             }
             else{
                 _context.Entry(kq).State = EntityState.Modified;
-                kq.ProductQuantity+=ProductQuantity;
+                kq.ProductQuantity+=1;
             }
             await _context.SaveChangesAsync();
 
-            
+            int cartCount=0;
+            cartCount=_context.productUsers.Where(c=>c.UsersId==UserId&&c.Status==false).ToList().Count;
 
-            return RedirectToAction("Home","Category");
+            return Json(new { success = true, message = "Product added to cart successfully", cartCount = cartCount });
+
         }
         public IActionResult Detail()
         {

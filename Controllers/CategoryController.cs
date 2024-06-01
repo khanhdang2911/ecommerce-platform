@@ -44,12 +44,14 @@ namespace Ecommerce_website.Controllers
             
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult SortByPrice(List<Product> products)
         {
             products=products.OrderBy(p=>p.Price).ToList();
             return View("Home",products);
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult SortByName(List<Product> products)
         {
             products=products.OrderBy(p=>p.Name).ToList();
